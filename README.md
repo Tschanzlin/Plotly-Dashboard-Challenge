@@ -13,6 +13,9 @@ Code Structure Outline
 
 
 9/28:
+- Loaded data for subject id dropdown menu and pushed to html file
+- Correctly pulling graphical data for horizontal bar chart and bubble chart
+
 
 
 9/27:
