@@ -42,11 +42,14 @@ function unpack(rows, index) {
 
 // Select id reference; correctly grabs reference but function error in 
 // html "optionChanged"
-// let subjectID = d3.select("#selDataset").property("value")
+// let subjectID = d3.select("#selDataset").node().value;
+// OR
+// let subjectID = d3.select(#"selDataset").property("value");
+
 // console.log(subjectID)
 // Grab data for horizontal chart
 
-subjectID = "1246"
+subjectID = "940"
 
 // d3.json("./../../data/samples.json").then((data) => {
 //     data.names.forEach(d => {
@@ -68,17 +71,32 @@ d3.json("./../../data/samples.json").then((data) => {
 
         if (d.id == subjectID) {
             otuIDs = d.otu_ids.slice(0, 10);
+            barLabels = otuIDs.forEach(function (v, i, a) {
+                a[i] =
+                    `OTU ${v}`
+            });
             otuValues = d.sample_values.slice(0, 10);
             console.log(d.id);
+            console.log("------------");
+            console.log(barLabels);
             console.log("------------");
             console.log(otuIDs);
             console.log("------------");
             console.log(otuValues);
+
+            // graph output
+            var data = [{
+                type: "bar",
+                x: otuValues,
+                y: otuIDs,
+                orientation: "h"
+            }]
+            Plotly.newPlot("bar", data);
         };
     });
 });
 
-// Bubble art -- if id = subjectID, grabs otu_ids, values, and lables
+// Bubble chart -- if id = subjectID, grabs otu_ids, values, and lables
 
 d3.json("./../../data/samples.json").then((data) => {
     data.samples.forEach(d => {
@@ -89,16 +107,37 @@ d3.json("./../../data/samples.json").then((data) => {
             otuIDs = d.otu_ids;
             otuValues = d.sample_values;
             otuLabels = d.otu_labels;
-            console.log(d.id);
-            console.log("------------");
-            console.log(otuIDs);
-            console.log("------------");
-            console.log(otuValues);
+            // console.log(d.id);
+            // console.log("------------");
+            // console.log(otuIDs);
+            // console.log("------------");
+            // console.log(otuValues);
             console.log("------------");
             console.log(otuLabels);
+
+            var data = [{
+                x: otuIDs,
+                y: otuValues,
+                text: otuLabels,
+                mode: "markers",
+                marker: {
+                    size: otuValues,
+                    color: otuIDs,
+                }
+            }];
+
+            var layout = {
+                title: "Test Layout",
+                showlegend: false,
+            };
+
+            Plotly.newPlot("bubble", data, layout)
+
         };
     });
 });
+
+// Create chart functions
 
 
 

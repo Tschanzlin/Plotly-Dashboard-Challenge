@@ -9,13 +9,13 @@ Code Structure Outline
 - function subjectInfo -- for subject ID, formats metadata table
 - function barChart -- for subject ID, plots bar chart
 - function bubbleChart - for subject ID, plots bubble chart
-- fucntion guageChart - for subject ID, plots guage chart
+- function guageChart - for subject ID, plots guage chart
 
 
 9/28:
 - Loaded data for subject id dropdown menu and pushed to html file
 - Correctly pulling graphical data for horizontal bar chart and bubble chart
-
+- Correctly displaying bubble and horizontal bar charts
 
 
 9/27:
