@@ -19,24 +19,16 @@ d3.json("./../../data/samples.json").then((data) => {
         });
 });
 
-// Unpack function
-function unpack(rows, index) {
-    return rows.map(function (row) {
-        return row[index];
-    });
-}
-
 
 // Select id reference; correctly grabs reference but function error in 
 // html "optionChanged"
 // let subjectID = d3.select("#selDataset").node().value;
 // OR
 // let subjectID = d3.select(#"selDataset").property("value");
-// console.log(subjectID)
-
 
 subjectID = "940"
 
+console.log(subjectID)
 
 // Metadata chart
 d3.json("./../../data/samples.json").then((data) => {
@@ -45,7 +37,7 @@ d3.json("./../../data/samples.json").then((data) => {
         // console.log("---------")
 
         if (d.id == subjectID) {
-            let meta = Object.entries(d)
+            let meta = Object.entries(d);
 
             console.log(d.id);
             console.log("------------");
@@ -66,7 +58,6 @@ d3.json("./../../data/samples.json").then((data) => {
 
 
 
-
 // Horizontal chart -- if id = subjectID, grabs top ten OTUs and values  
 d3.json("./../../data/samples.json").then((data) => {
     data.samples.forEach(d => {
@@ -74,12 +65,12 @@ d3.json("./../../data/samples.json").then((data) => {
         // console.log("---------")
 
         if (d.id == subjectID) {
-            otuIDs = d.otu_ids.slice(0, 10);
+            otuIDs = d.otu_ids.slice(0, 10).reverse();
             barLabels = otuIDs.forEach(function (v, i, a) {
                 a[i] =
                     `OTU ${v}`
             });
-            otuValues = d.sample_values.slice(0, 10);
+            otuValues = d.sample_values.slice(0, 10).reverse();
             console.log(d.id);
             console.log("------------");
             console.log(barLabels);
@@ -95,7 +86,13 @@ d3.json("./../../data/samples.json").then((data) => {
                 y: otuIDs,
                 orientation: "h"
             }]
-            Plotly.newPlot("bar", data);
+
+            var layout = {
+                title: "Subject ID Top 10 OTU's",
+                showlegend: false,
+            };
+
+            Plotly.newPlot("bar", data, layout);
         };
     });
 });
@@ -131,7 +128,7 @@ d3.json("./../../data/samples.json").then((data) => {
             }];
 
             var layout = {
-                title: "Test Layout",
+                title: "Subject ID OTU's vs. OTU Sample Value",
                 showlegend: false,
             };
 
