@@ -12,11 +12,13 @@ Code Structure Outline
 - function guageChart - for subject ID, plots guage chart
 
 
+9/29:
+- Correctly pulling and loading metadata
+
 9/28:
 - Loaded data for subject id dropdown menu and pushed to html file
 - Correctly pulling graphical data for horizontal bar chart and bubble chart
 - Correctly displaying bubble and horizontal bar charts
-
 
 9/27:
 - Loading and console logged data; review dataset

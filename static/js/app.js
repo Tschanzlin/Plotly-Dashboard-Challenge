@@ -19,9 +19,6 @@ d3.json("./../../data/samples.json").then((data) => {
         });
 });
 
-
-// Grab data for horizontal bar chart
-
 // Unpack function
 function unpack(rows, index) {
     return rows.map(function (row) {
@@ -30,38 +27,45 @@ function unpack(rows, index) {
 }
 
 
-// d3.json("./../../data/samples.json").then((data) => {
-//     let id = data.names;
-//     // let samValues = unpack(data.samples, 0);
-//     let samValues = data.samples.sample_values;
-//     console.log(id);
-//     console.log(samValues)
-// });
-
-
-
 // Select id reference; correctly grabs reference but function error in 
 // html "optionChanged"
 // let subjectID = d3.select("#selDataset").node().value;
 // OR
 // let subjectID = d3.select(#"selDataset").property("value");
-
 // console.log(subjectID)
-// Grab data for horizontal chart
+
 
 subjectID = "940"
 
-// d3.json("./../../data/samples.json").then((data) => {
-//     data.names.forEach(d => {
-//         console.log(d);
-//         console.log("---------")
 
-//         if (d = subjectID)
-//             otuIds = data.samples.otu_ids;
-//             console.log(otuIds);
-//             console.log("------------");
-//             otuValues = data.samples
-//     });
+// Metadata chart
+d3.json("./../../data/samples.json").then((data) => {
+    data.metadata.forEach(d => {
+        // console.log(d);
+        // console.log("---------")
+
+        if (d.id == subjectID) {
+            let meta = Object.entries(d)
+
+            console.log(d.id);
+            console.log("------------");
+            console.log(d);
+            console.log("------------");
+
+            d3.select("#sample-metadata")
+                .selectAll("option")
+                .data(meta)
+                .enter()
+                .append("option")
+                .text(function (d1) {
+                    return d1;
+                });
+        };
+    });
+});
+
+
+
 
 // Horizontal chart -- if id = subjectID, grabs top ten OTUs and values  
 d3.json("./../../data/samples.json").then((data) => {
