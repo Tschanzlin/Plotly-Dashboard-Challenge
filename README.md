@@ -14,9 +14,9 @@ Code Structure Outline
 
 9/30:
 - Charts dynamically loading based on selection of OTU ID
-- Need to create init function to load page with default ID (first id)
+- Initialize page with default ID (first id)
 - Create functions to call to load charts
-- Check preventDefault function (page loading correctly but getting error in console log)
+- Added working gauge chart
 
 9/29:
 - Correctly pulling and loading metadata
