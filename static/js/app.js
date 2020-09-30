@@ -20,6 +20,41 @@ d3.json("./../../data/samples.json").then((data) => {
 });
 
 
+
+
+// Select filter; create event handler to activate function
+
+var filter = d3.select("#selDataset");
+filter.on("change", optionChanged);
+
+function optionChanged() {
+    let subjectID1 = d3.select("#selDataset").property("value");
+    console.log(subjectID1)
+
+    d3.json("./../../data/samples.json").then((data) => {
+        data.metadata.forEach(d => {
+            // console.log(d);
+            // console.log("---------")
+    
+            if (d.id == subjectID1) {
+                let meta = Object.entries(d);
+    
+                d3.select("#sample-metadata")
+                    .selectAll("option")
+                    .data(meta)
+                    .enter()
+                    .append("option")
+                    .text(function (d1) {
+                        return d1;
+                    });
+            };
+        });
+    });
+
+}
+
+
+
 // Select id reference; correctly grabs reference but function error in 
 // html "optionChanged"
 // let subjectID = d3.select("#selDataset").node().value;
@@ -30,31 +65,31 @@ subjectID = "940"
 
 console.log(subjectID)
 
-// Metadata chart
-d3.json("./../../data/samples.json").then((data) => {
-    data.metadata.forEach(d => {
-        // console.log(d);
-        // console.log("---------")
+// // Metadata chart
+// d3.json("./../../data/samples.json").then((data) => {
+//     data.metadata.forEach(d => {
+//         // console.log(d);
+//         // console.log("---------")
 
-        if (d.id == subjectID) {
-            let meta = Object.entries(d);
+//         if (d.id == subjectID) {
+//             let meta = Object.entries(d);
 
-            console.log(d.id);
-            console.log("------------");
-            console.log(d);
-            console.log("------------");
+//             console.log(d.id);
+//             console.log("------------");
+//             console.log(d);
+//             console.log("------------");
 
-            d3.select("#sample-metadata")
-                .selectAll("option")
-                .data(meta)
-                .enter()
-                .append("option")
-                .text(function (d1) {
-                    return d1;
-                });
-        };
-    });
-});
+//             d3.select("#sample-metadata")
+//                 .selectAll("option")
+//                 .data(meta)
+//                 .enter()
+//                 .append("option")
+//                 .text(function (d1) {
+//                     return d1;
+//                 });
+//         };
+//     });
+// });
 
 
 

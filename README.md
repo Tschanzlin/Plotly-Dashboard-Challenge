@@ -12,13 +12,19 @@ Code Structure Outline
 - function guageChart - for subject ID, plots guage chart
 
 
+9/30:
+- Charts dynamically loading based on selection of OTU ID
+- Need to create init function to load page with default ID (first id)
+- Create functions to call to load charts
+- Check preventDefault function (page loading correctly but getting error in console log)
+
 9/29:
 - Correctly pulling and loading metadata
 
 9/28:
 - Loaded data for subject id dropdown menu and pushed to html file
-- Correctly pulling graphical data for horizontal bar chart and bubble chart
-- Correctly displaying bubble and horizontal bar charts
+- Correctly pulling graphical data for horizontal bar chart and bubble chart; statically linked to ID
+- Correctly displaying bubble and horizontal bar charts; statically linked to ID
 
 9/27:
 - Loading and console logged data; review dataset
