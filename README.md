@@ -1,16 +1,14 @@
 # Plotly-Dashboard-Challenge
 
 
-Code Structure Outline
-- Link subject ids to dropdown menu (id - "selDataset")
-- For each id selected, create four graphical / tabular outputs -- subejct id metadata, barchart gpaph of top ten OTUs by ID, bubble chart of all otus for subject id vs. sample values, and guage chart
-- Try following structure
-- function getData -- calls data for graphs; calls ploting and table functions
-- function subjectInfo -- for subject ID, formats metadata table
-- function barChart -- for subject ID, plots bar chart
-- function bubbleChart - for subject ID, plots bubble chart
-- function guageChart - for subject ID, plots guage chart
+Notes:
+- Basic and Advanced Challenge assignment running under single apps.js file
+- Web page is initialized with the first Subject ID selection, which is fixed to ID940; if dataset was dynamic, I'd change to default to the first selection in the data.id, but fixing the ID was sufficient and simpler for this purpose
+- There is one main fuction, optionChanged, which calls the data and selects and outputs the metadata table, and bar, bubble, and gauge graphs.  I contemplated breaking these out into subfunctions, but in this case the code is only used once, and I didn't see much benefit in simplifying the various sections further.  
 
+
+10/1:
+- Minor clean-ups
 
 9/30:
 - Charts dynamically loading based on selection of OTU ID
