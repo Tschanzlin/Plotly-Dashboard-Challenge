@@ -1,12 +1,12 @@
 // Load data from samples.json; review dataset
-d3.json("./../data/samples.json").then(function (data) {
+d3.json("../data/samples.json").then(function (data) {
     console.log(data);
 });
 
 
 // Loda data from samples.json; create ID array and load to dropdown menu
 
-d3.json("./../data/samples.json").then((data) => {
+d3.json("../data/samples.json").then((data) => {
     let id = data.names;
     console.log(id)
     d3.select("select")
@@ -36,7 +36,7 @@ function optionChanged(subjectID1) {
     // d3.event.preventDefault();
 
     // Load and select data for meta data table 
-    d3.json("./../data/samples.json").then((data) => {
+    d3.json("../data/samples.json").then((data) => {
         data.metadata.forEach(d => {
 
             // For selected Subject ID
@@ -91,7 +91,7 @@ function optionChanged(subjectID1) {
 
 
     // Load and select data for bar and bubble charts 
-    d3.json("./../data/samples.json").then((data) => {
+    d3.json("../data/samples.json").then((data) => {
         data.samples.forEach(d => {
 
             // For selected Subject ID
